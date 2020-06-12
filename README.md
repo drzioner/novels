@@ -1,1 +1,3 @@
 #novels app
+
+##general configuration
