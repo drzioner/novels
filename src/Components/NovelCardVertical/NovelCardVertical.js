@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FaRegHeart } from 'react-icons/fa';
 
-import { Container, Title } from '../Styles';
+import { Container, TitleNovel } from '../Styles';
 import Chip from '../Chip';
 
 const ContainerNovel = styled(Container)`
@@ -60,17 +60,11 @@ const ContainerUp = styled(Container)`
   width: 90%;
 `;
 
-const TitleNovel = styled(Title)`
-  align-items: end;
+const TitleNovelNew = styled(TitleNovel)`
   background: ${(props) =>
     props.background ? props.background : props.theme.dark.colors.secondary};
   color: ${(props) =>
     props.color ? props.color : props.theme.dark.colors.tertiary};
-  height: 5%;
-  margin: 0;
-  margin-bottom: 0.5rem;
-  padding: 10% 5% 10%;
-  width: 90%;
   a {
     color: ${(props) =>
       props.color ? props.color : props.theme.dark.colors.tertiary};
@@ -96,9 +90,9 @@ function NovelCardVertical({
         background={
           'linear-gradient(rgba(5,5,5,0), rgba(5,5,5,0.2),rgba(5,5,5,0.4))'
         }>
-        <TitleNovel background={'transparent'}>
+        <TitleNovelNew background={'transparent'}>
           <Link to={'/novel/' + nameNovel}>{title}</Link>
-        </TitleNovel>
+        </TitleNovelNew>
         <Chip image={coverAuthor} author={author} />
       </ContainerShadow>
     </ContainerNovel>
