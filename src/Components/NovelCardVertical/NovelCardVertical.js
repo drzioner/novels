@@ -29,7 +29,6 @@ const ContainerNovel = styled(Container)`
 `;
 
 const ContainerShadow = styled(Container)`
-  align-items: self-end;
   background: ${(props) =>
     props.background ? props.background : props.theme.dark.colors.primary};
   display: ${(props) => (props.display ? props.display : 'flex')};
@@ -39,7 +38,7 @@ const ContainerShadow = styled(Container)`
   height: 30%;
   justify-content: space-between;
   margin: 0;
-  padding: 0% 5% 5%;
+  padding: 5% 5% 2%;
   text-transform: capitalize;
   width: 90%;
 `;
@@ -61,6 +60,7 @@ const ContainerUp = styled(Container)`
 `;
 
 const TitleNovelNew = styled(TitleNovel)`
+  align-items: flex-start;
   background: ${(props) =>
     props.background ? props.background : props.theme.dark.colors.secondary};
   color: ${(props) =>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Container = styled.div`
   align-content: ${(props) =>
     props.alignContent ? props.alignContent : 'center'};
-  align-items: ${(props) => (props.alignItems ? props.alignItems : 'inherit')};
+  align-items: ${(props) => (props.alignItems ? props.alignItems : 'end')};
   background: ${(props) =>
     props.color
       ? props.theme[props.color].colors.secondary
@@ -17,7 +17,7 @@ const Container = styled.div`
       : props.theme.light.colors.tertiary};
   display: flex;
   flex-flow: ${(props) => (props.flexFlow ? props.flexFlow : 'row wrap')};
-  height: ${(props) => (props.height ? props.height : 'inherit')};
+  height: ${(props) => (props.height ? props.height : 'auto')};
   justify-content: ${(props) =>
     props.justifyContent ? props.justifyContent : 'center'};
   margin: ${(props) => (props.margin ? props.margin : '0 0 1rem 0')};
