@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Container } from '../Styles';
+import { Container } from '../../Components/Styles';
 
-import Header from '../Header';
-import NovelCarousel from '../NovelCarousel';
-import NovelList from '../NovelList';
+import Header from '../../Components/Header';
+import NovelCarousel from '../../Components/NovelCarousel';
+import NovelList from '../../Components/NovelList';
 
 function Home() {
   return (

@@ -19,7 +19,8 @@ const Button = styled.button`
     props.color
       ? props.theme[props.color].colors.tertiary
       : props.theme.sepia.colors.tertiary};
-  display: flex;
+  cursor: ${(props) => (props.cursor ? props.cursor : 'pointer')};
+  display: ${(props) => (props.display ? props.display : 'flex')};
   flex-flow: ${(props) => (props.flexFlow ? props.flexFlow : 'row nowrap')};
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : '700')};
   font-size: 120%;

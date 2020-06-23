@@ -1,11 +1,11 @@
 import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
-import { Container } from '../Styles';
+import { Container } from '../../Components/Styles';
 
-import Header from '../Header';
-import NovelCardVertical from '../NovelCardVertical';
-import CardDetails from '../CardDetails';
+import Header from '../../Components/Header';
+import NovelCardVertical from '../../Components/NovelCardVertical';
+import CardDetails from '../../Components/CardDetails';
 
 import { useFetch } from '../../Hooks';
 

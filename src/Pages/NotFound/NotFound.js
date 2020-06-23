@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { Button, Container } from '../Styles';
+import { Button, Container } from '../../Components/Styles';
 
 const ContainerNoFound = styled(Container)`
   background: ${(props) =>
