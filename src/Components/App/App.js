@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { GlobalStyles, Theme } from '../Styles';
 
-import Home from '../Home';
-import NovelDetails from '../NovelDetails';
-import NotFound from '../NotFound';
+import Home from '../../Pages/Home';
+import NovelDetails from '../../Pages/NovelDetails';
+import NotFound from '../../Pages/NotFound';
+import Footer from '../Footer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/novel/:novelName" children={<NovelDetails />} />
           <Route path="*" component={NotFound} />
         </Switch>
+        <Footer title={'Novels'} />
       </Theme>
     </Router>
   );
