@@ -1,8 +1,11 @@
 import React from 'react';
 import Carousel from '@brainhubeu/react-carousel';
+import styled from 'styled-components';
+import useState from 'global-hook-store';
 
 import '@brainhubeu/react-carousel/lib/style.css';
-import styled from 'styled-components';
+
+import GlobalState from '../GlobalState';
 
 import NovelCardVertical from '../NovelCardVertical';
 
@@ -16,22 +19,22 @@ const CarouselNovel = styled(Carousel)`
   }
 `;
 
-const config = new Request('https://drstudios.tech/novels/api/novels', {
-  method: 'GET',
-  mode: 'cors',
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-    Authorization: process.env.REACT_APP_TOKEN,
-  },
-});
-
 function NovelCarousel() {
-  const { data } = useFetch(config, []);
+  const { state } = useState(GlobalState);
 
-  const response =
-    data.response !== undefined && data.response !== false
-      ? data.response
-      : { data: [] };
+  const config = new Request(
+    'https://drstudios.tech/novels/api/novels/slider',
+    {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+        Authorization: state.auth,
+      },
+    },
+  );
+
+  useFetch(config, 'covers');
 
   return (
     <CarouselNovel
@@ -53,8 +56,8 @@ function NovelCarousel() {
           arrows: false,
         },
       }}>
-      {response.data !== false && response.data !== undefined ? (
-        response.data.map((novel) => {
+      {state.covers !== [] ? (
+        state.novels.map((novel) => {
           const { id, title, cover, nameNovel, author, coverAuthor } = novel;
 
           return (

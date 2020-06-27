@@ -11,8 +11,8 @@ const TitleNovel = styled(Title)`
   font-size: ${(props) => (props.fontSize ? props.fontSize : '120%')};
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : '700')};
   height: auto;
-  margin: 0 0 0.5rem 3%;
-  padding: 0%;
+  margin: ${(props) => (props.margin ? props.margin : '0 0 0.5rem 3%')};
+  padding: ${(props) => (props.padding ? props.padding : '0')};
   text-align: ${(props) => (props.textAlign ? props.textAlign : 'inherit')};
   width: 100%;
   a {

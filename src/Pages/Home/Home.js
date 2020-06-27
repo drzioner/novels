@@ -5,6 +5,7 @@ import { Container } from '../../Components/Styles';
 import Header from '../../Components/Header';
 import NovelCarousel from '../../Components/NovelCarousel';
 import NovelList from '../../Components/NovelList';
+import Footer from '../../Components/Footer';
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
         <NovelCarousel />
         <NovelList title={'Mas vistos'} />
       </Container>
+      <Footer title={'Novels'} />
     </>
   );
 }

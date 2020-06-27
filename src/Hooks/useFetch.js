@@ -1,17 +1,25 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
+import useState from 'global-hook-store';
 
-export default function useFetch(request, defaultValue) {
-  const [data, setData] = useState(defaultValue);
-  const [error, setError] = useState(null);
+import GlobalState from '../Components/GlobalState';
+
+export default function useFetch(request, item) {
+  const { state, setState } = useState(GlobalState);
 
   const fetchApi = (request) => {
     fetch(request)
       .then((response) => response.json())
       .then((data) => {
-        setData(data);
+        let valueItem = data.response.data === false ? [] : data.response.data;
+        let valueAuth =
+          data.response.require === 'authorization' ? 'login' : state.auth;
+        if (valueAuth === 'login') {
+          localStorage.removeItem('auth');
+        }
+        setState({ ...state, auth: valueAuth, [item]: valueItem });
       })
       .catch((err) => {
-        setError(err);
+        setState({ ...state, errors: err });
       });
   };
 
@@ -23,6 +31,4 @@ export default function useFetch(request, defaultValue) {
   useEffect(() => {
     initFetch();
   }, [initFetch]);
-
-  return { data, error };
 }

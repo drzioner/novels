@@ -21,7 +21,6 @@ const Food = styled.footer`
   position: sticky;
   top: 0;
   width: 80%;
-  z-index: 10;
 `;
 
 const Icons = styled.div`
