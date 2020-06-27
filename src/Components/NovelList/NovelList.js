@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import useState from 'global-hook-store';
 
 import { Title } from '../Styles';
+
+import GlobalState from '../GlobalState';
 
 import NovelCardHorizontal from '../NovelCardHorizontal';
 
@@ -12,28 +15,23 @@ const TitleList = styled(Title)`
 `;
 
 function NovelList({ title }) {
-  const { data } = useFetch(
-    new Request('https://drstudios.tech/novels/api/novels', {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        Authorization: process.env.REACT_APP_TOKEN,
-      },
-    }),
-    [],
-  );
+  const { state } = useState(GlobalState);
+  const config = new Request('https://drstudios.tech/novels/api/novels', {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      Authorization: state.auth,
+    },
+  });
 
-  const response =
-    data.response !== undefined && data.response !== false
-      ? data.response
-      : { data: [] };
+  useFetch(config, 'novels');
 
   return (
     <>
       <TitleList>{title}</TitleList>
-      {response.data !== false && response.data !== undefined ? (
-        response.data.map((novel) => {
+      {state.novels !== [] ? (
+        state.novels.map((novel) => {
           const { id, title, cover, author, coverAuthor, nameNovel } = novel;
 
           return (

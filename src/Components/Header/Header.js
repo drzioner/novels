@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import useState from 'global-hook-store';
 
 import {
   RiBarChartHorizontalLine,
@@ -8,7 +9,11 @@ import {
   RiMoreLine,
 } from 'react-icons/ri';
 
+import GlobalState from '../GlobalState';
+
 import { Title } from '../Styles';
+
+import Menu from '../Menu';
 
 const Head = styled.header`
   background: ${(props) =>
@@ -39,6 +44,7 @@ const Icons = styled.div`
   flex-flow: row nowrap;
   font-size: 120%;
   justify-content: space-between;
+  outline: none;
   padding: 0% 0% 0.5rem;
   width: 100%;
   a {
@@ -46,14 +52,18 @@ const Icons = styled.div`
       props.color
         ? props.theme[props.color].colors.tertiary
         : props.theme.light.colors.tertiary};
+    outline: none;
     text-decoration: none;
   }
   svg {
     cursor: pointer;
+    outline: none;
   }
 `;
 
 function Header({ history, title }) {
+  const { actions } = useState(GlobalState);
+
   function handleClick() {
     history.goBack();
   }
@@ -66,10 +76,13 @@ function Header({ history, title }) {
           <RiMoreLine />
         </Icons>
       ) : (
-        <Icons>
-          <RiBarChartHorizontalLine />
-          <RiUserLine />
-        </Icons>
+        <>
+          <Menu title={'Novels'} />
+          <Icons>
+            <RiBarChartHorizontalLine onClick={() => actions.setShowMenu()} />
+            <RiUserLine />
+          </Icons>
+        </>
       )}
 
       <Title>{title}</Title>

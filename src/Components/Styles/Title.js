@@ -10,9 +10,11 @@ const Title = styled.h1`
   font-size: 120%;
   justify-content: ${(props) =>
     props.justifyContent ? props.justifyContent : 'space-between'};
-  padding: 0% 30% 0.5rem 0;
+  padding: ${(props) => (props.padding ? props.padding : '0% 30% 0.5rem 0')};
+  margin: ${(props) => (props.margin ? props.margin : 'inherit')};
   text-transform: capitalize;
-  width: 70%;
+  text-align: ${(props) => (props.textAlign ? props.textAlign : 'inherit')};
+  width: ${(props) => (props.width ? props.width : '70%')};
 `;
 
 export default Title;

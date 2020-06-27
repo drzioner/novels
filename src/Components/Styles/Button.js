@@ -23,18 +23,21 @@ const Button = styled.button`
   display: ${(props) => (props.display ? props.display : 'flex')};
   flex-flow: ${(props) => (props.flexFlow ? props.flexFlow : 'row nowrap')};
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : '700')};
-  font-size: 120%;
+  font-size: ${(props) => (props.fontSize ? props.fontSize : '120%')};
   font-family: ${(props) =>
     props.fontFamily ? props.fontFamily : props.theme.fonts.primary};
-  height: ${(props) => (props.height ? props.height : 'inherit')};
+  height: ${(props) => (props.height ? props.height : 'auto')};
   justify-content: ${(props) =>
     props.justifyContent ? props.justifyContent : 'center'};
   margin: ${(props) => (props.margin ? props.margin : '0.2rem 1rem')};
   opacity: ${(props) => (props.opacity ? props.opacity : '1')};
   outline: none;
-  padding: ${(props) => (props.padding ? props.padding : '0.5rem 1.2rem')};
+  padding: ${(props) => (props.padding ? props.padding : '0.8rem 1.2rem')};
+  position: ${(props) => (props.position ? props.position : 'inherit')};
+  top: ${(props) => (props.top ? props.top : 'inherit')};
+  bottom: ${(props) => (props.bottom ? props.bottom : 'inherit')};
   text-align: ${(props) => (props.textAlign ? props.textAlign : 'center')};
-  width: ${(props) => (props.width ? props.width : '10rem')};
+  width: ${(props) => (props.width ? props.width : '60%')};
 `;
 
 export default Button;
