@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import useState from 'global-hook-store';
+import { Base64 } from 'js-base64';
 import { RiCopyrightLine } from 'react-icons/ri';
 
 import { Button, Container, Form, Title } from '../../Components/Styles';
@@ -56,7 +57,15 @@ function SingIn() {
       .then((response) => response.json())
       .then((data) => {
         localStorage.setItem('auth', data.response.data.token);
-        setState({ ...state, auth: data.response.data.token });
+        localStorage.setItem(
+          'user',
+          Base64.encode(JSON.stringify(data.response.data)),
+        );
+        setState({
+          ...state,
+          auth: data.response.data.token,
+          user: data.response.data,
+        });
       })
       .catch((err) => {});
   }
