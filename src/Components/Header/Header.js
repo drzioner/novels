@@ -14,6 +14,7 @@ import GlobalState from '../GlobalState';
 import { Title } from '../Styles';
 
 import Menu from '../Menu';
+import Profile from '../Profile';
 
 const Head = styled.header`
   background: ${(props) =>
@@ -78,9 +79,10 @@ function Header({ history, title }) {
       ) : (
         <>
           <Menu title={'Novels'} />
+          <Profile />
           <Icons>
             <RiBarChartHorizontalLine onClick={() => actions.setShowMenu()} />
-            <RiUserLine />
+            <RiUserLine onClick={() => actions.setShowProfile()} />
           </Icons>
         </>
       )}

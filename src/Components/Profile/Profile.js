@@ -4,7 +4,7 @@ import useState from 'global-hook-store';
 
 import { RiCloseLine } from 'react-icons/ri';
 
-import { TitleNovel } from '../Styles';
+import { Button, TitleNovel } from '../Styles';
 
 import GlobalState from '../GlobalState';
 
@@ -39,25 +39,34 @@ const Icons = styled.div`
   }
 `;
 
-function Menu({ title }) {
-  const { actions } = useState(GlobalState);
+function Profile() {
+  const { actions, state } = useState(GlobalState);
+
+  const { username } = state.user;
 
   return (
-    <LayoutMenu left>
+    <LayoutMenu>
       <Icons>
         <TitleNovel background={'transparent'} fontSize={'90%'} margin={'0'}>
-          {title}
+          {username}
         </TitleNovel>
-        <RiCloseLine onClick={() => actions.setShowMenu()} />
+        <RiCloseLine onClick={() => actions.setShowProfile()} />
       </Icons>
       <ul>
         <li>un item</li>
         <li>un item</li>
-        <li>un item</li>
-        <li>un item</li>
+        <li>
+          <Button
+            bottom={'5rem'}
+            fontSize={'80%'}
+            position={'absolute'}
+            onClick={() => actions.logout()}>
+            Cerrar sesion
+          </Button>
+        </li>
       </ul>
     </LayoutMenu>
   );
 }
 
-export default Menu;
+export default Profile;
